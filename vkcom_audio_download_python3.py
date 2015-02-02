@@ -6,7 +6,6 @@ import csv
 import sys
 
 
-TOKEN = ''
 FORBIDDEN_CHARS = '/\\\?%*:|"<>!'
 MUSIC_FOLDER = 'music'
 
@@ -24,6 +23,7 @@ def find_track(csv_row):
     filename = re.sub(' +', ' ', filename)
     filename= filename+'.mp3'
     print(filename)
+    TOKEN = sys.argv[2]
 
     #sort = 2 by popularity, auto_complete=1 fixes potential typos
     params = dict(q=csv_row[0] + ' ' +csv_row[1], sort = 2, auto_complete=1, access_token=TOKEN)
@@ -62,8 +62,7 @@ def main():
     #expects 1st argument to be filename
     #             2nd argument to be token
     filename = sys.argv[1]
-    TOKEN = sys.argv[2]
-    print(filename, TOKEN)
+    print(filename)
     read_csv_file(filename)
 
 
